@@ -13,8 +13,15 @@ class Solution {
 public:
             
 
-TreeNode* solve(TreeNode* root, int val, int depth){
-if(root==NULL) return NULL;
+
+ 
+    TreeNode* addOneRow(TreeNode* root, int val, int depth) {
+        if(depth == 1){
+            TreeNode* newroot = new TreeNode(val);
+            newroot->left = root;
+            return newroot;
+        }
+        if(root==NULL) return NULL;
         if(depth-1==1){
             TreeNode* left = root->left;
             TreeNode* right = root->right;
@@ -26,17 +33,9 @@ if(root==NULL) return NULL;
              newNode2->right = right;
             return root;
         }   
-            TreeNode* left = solve(root->left, val,depth-1);
-            TreeNode* right = solve(root->right,val,depth-1);
+            TreeNode* left = addOneRow(root->left, val,depth-1);
+            TreeNode* right = addOneRow(root->right,val,depth-1);
            
         return root;
-}
-    TreeNode* addOneRow(TreeNode* root, int val, int depth) {
-        if(depth == 1){
-            TreeNode* newroot = new TreeNode(val);
-            newroot->left = root;
-            return newroot;
-        }
-        return solve(root,val,depth);
     }
 };
