@@ -7,14 +7,13 @@ public:
         while(i<=j){
             int val = arr[i]+arr[j];
             if(val <= limit){
-                count++;
                 i++;
                 j--;
-                }
+            }
             else {
-                count++;
                 j--;
             }
+            count++;
         }
         return count;
     }
